@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-white border border-slate-400 rounded overflow-hidden shadow">
+   <div class="tw-bg-white tw-border tw-border-slate-400 tw-rounded tw-overflow-hidden tw-shadow">
     <template v-if="items.length">
       <button
-        class="flex flex-row gap-2 items-center w-full p-2 pr-12 text-slate-600 hover:bg-slate-50 text-sm"
-        :class="{ 'bg-slate-100': index === selectedIndex }"
+        class="tw-flex tw-flex-row tw-gap-2 tw-items-center tw-w-full tw-p-2 tw-pr-12 text-slate-600 hover:tw-bg-slate-50 tw-text-sm"
+        :class="{ 'tw-bg-slate-100': index === selectedIndex }"
         v-for="(item, index) in itemsWithInsertCommand"
         :key="index"
         @click.prevent="selectItem(index)"
@@ -12,7 +12,7 @@
         {{ item.title }}
       </button>
     </template>
-    <div class="p-2 text-slate-600 text-sm w-full" v-else>No result</div>
+    <div class="tw-p-2 tw-text-slate-600 tw-text-sm tw-w-full" v-else>No result</div>
   </div>
 </template>
 

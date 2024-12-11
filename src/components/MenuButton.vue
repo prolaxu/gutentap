@@ -1,6 +1,6 @@
 <template>
   <button
-    class="w-full flex p-1 flex-row items-center text-slate-600 rounded gap-2 hover:bg-slate-100"
+    class="w-full tw-flex tw-p-1 tw-flex-row tw-items-center tw-text-slate-600 tw-rounded tw-gap-2 hover:tw-bg-slate-100"
     :aria-label="label"
     :data-tooltip="label"
     :title="label"
@@ -29,7 +29,7 @@ export default {
     activeClass: {
       type: String,
       required: false,
-      default: "!bg-slate-600 hover:!bg-slate-700 !text-white",
+      default: "!tw-bg-slate-600 hover:!tw-bg-slate-700 !tw-text-white",
     },
     active: {
       type: Boolean,

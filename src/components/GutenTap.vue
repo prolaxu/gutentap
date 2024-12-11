@@ -10,10 +10,13 @@
         getReferenceClientRect: getTableRowMenuCoords,
       }"
     >
-      <menu-item>
+      <menu-item
+        :dropDownActive="getDilogState('row_tools')"
+      >
         <menu-button
+           @click.prevent="()=> toggleDilaogState('row_tools')"
           title="Row tools"
-          class="rounded-full text-slate-400 hover:text-slate-800"
+          class="tw-rounded-full tw-text-slate-400 hover:tw-text-slate-800"
           :content="moreIconRound"
         />
 
@@ -39,11 +42,14 @@
         getReferenceClientRect: getTableColumnMenuCoords,
       }"
     >
-      <menu-item>
+      <menu-item
+        :dropDownActive="getDilogState('column_tools')"
+      >
         <menu-button
           title="Column tools"
           :content="moreIconRound"
-          class="rounded-full text-slate-400 hover:text-slate-800"
+          class="tw-rounded-full tw-text-slate-400 hover:tw-text-slate-800"
+           @click.prevent="()=> toggleDilaogState('column_tools')"
         />
         <template #dropdown>
           <menu-dropdown-button
@@ -63,10 +69,10 @@
       :draggable="dragging"
       :should-show="shouldShowMainToolbar"
       v-if="editor"
-      class="text-sm bg-white max-w-screen flex divide-x max-w-full divide-slate-400 flex-row border-slate-400 md:rounded border-t md:border"
+      class="tw-text-sm tw-bg-white tw-max-w-screen tw-flex tw-divide-x tw-max-w-full tw-divide-slate-400 tw-flex-row tw-border-slate-400 md:tw-rounded tw-border-t md:tw-border"
       :editor="editor"
       :class="{
-        'mouse:pointer-events-none mouse:opacity-0': isTyping,
+        'mouse:tw-pointer-events-none mouse:tw-opacity-0': isTyping,
       }"
       :tippy-options="{
         maxWidth: 'none',
@@ -74,14 +80,14 @@
         getReferenceClientRect: getMenuCoords,
         onCreate: (instance) =>
           instance.popper.classList.add(
-            'max-md:!sticky',
-            'max-md:!bottom-0',
-            'max-md:!top-auto',
-            'max-md:!transform-none'
+            'max-md:!tw-sticky',
+            'max-md:!tw-bottom-0',
+            'max-md:!tw-top-auto',
+            'max-md:!tw-transform-none'
           ),
       }"
     >
-      <div class="flex flex-row">
+      <div class="tw-flex tw-flex-row">
         <button
           @click.prevent
           @mousedown="startDragging($event)"
@@ -89,10 +95,10 @@
             draggedNodePosition = false;
             dragging = false;
           "
-          class="hidden md:block ml-1 my-2 hover:bg-slate-100 rounded"
+          class="hidden md:tw-block tw-ml-1 tw-my-2 hover:tw-bg-slate-100 tw-rounded"
           :class="{
-            'cursor-grab': !dragging,
-            'cursor-grabbing mr-1': dragging,
+            'tw-cursor-grab': !dragging,
+            'tw-cursor-grabbing mr-1': dragging,
           }"
           aria-label="Drag"
           data-tooltip="Drag"
@@ -104,7 +110,7 @@
             viewBox="0 0 24 24"
             aria-hidden="true"
             focusable="false"
-            class="w-5 h-5 md:w-6 md:h-6"
+            class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6"
           >
             <path
               d="M8 7h2V5H8v2zm0 6h2v-2H8v2zm0 6h2v-2H8v2zm6-14v2h2V5h-2zm0 8h2v-2h-2v2zm0 6h2v-2h-2v2z"
@@ -113,22 +119,24 @@
         </button>
 
         <div
-          class="py-1 md:py-2 group relative"
+          class="tw-py-1 md:tw-py-2 tw-group tw-relative"
           v-if="!dragging && currentBlockTool"
         >
-          <menu-item>
+          <menu-item
+            :dropDownActive="getDilogState('current_block_tool')"
+          >
             <menu-button
-              @click.prevent
+               @click.prevent="()=> toggleDilaogState('current_block_tool')"
               :title="currentBlockTool?.name"
               :content="currentBlockTool?.icon"
               :class="
                 currentBlockTool?.canBeConverted &&
-                'group-focus-within:bg-slate-600 !cursor-pointer group-focus-within:text-white hover:bg-slate-50'
+                'tw-group-focus-within:bg-slate-600 !tw-cursor-pointer tw-group-focus-within:text-white hover:tw-bg-slate-50'
               "
             />
             <template v-if="currentBlockTool?.canBeConverted" #dropdown>
               <div
-                class="p-3 uppercase text-gray-600 text-xs pb-1 tracking-wide"
+                class="tw-p-3 tw-uppercase tw-text-gray-600 tw-text-xs tw-pb-1 tw-tracking-wide"
               >
                 Transform to
               </div>
@@ -147,17 +155,17 @@
           </menu-item>
         </div>
 
-        <div class="pr-2 flex flex-col" v-if="!dragging">
+        <div class="tw-pr-2 tw-flex tw-flex-col" v-if="!dragging">
           <button
             @click.prevent="moveNode('UP')"
             :disabled="!canMoveNodeUp()"
             data-tooltip="Move up"
-            class="mt-1 md:mt-2"
+            class="tw-mt-1 tw-md:tw-mt-2"
           >
             <svg
               width="24"
               height="24"
-              class="pointer-events-none w-5 h-5 md:w-6 md:h-6"
+              class="tw-pointer-events-none tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -173,7 +181,7 @@
             @click.prevent="moveNode('DOWN')"
             :disabled="!canMoveNodeDown()"
             data-tooltip="Move down"
-            class="-mt-1.5"
+            class="-tw-mt-1.5"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +190,7 @@
               fill="currentColor"
               aria-hidden="true"
               viewBox="0 0 24 24"
-              class="pointer-events-none -mt-2 w-5 h-5 md:w-6 md:h-6"
+              class="tw-pointer-events-none -tw-mt-2 tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6"
             >
               <path d="M17.5 11.6 12 16l-5.5-4.4.9-1.2L12 14l4.5-3.6 1 1.2z" />
             </svg>
@@ -191,15 +199,16 @@
       </div>
 
       <div
-        class="flex gap-1 items-center hide-empty flex-row p-1 md:p-2"
+        class="tw-flex tw-gap-1 tw-items-center tw-hide-empty tw-flex-row tw-p-1 md:tw-p-2"
         v-if="!dragging"
       >
         <menu-item
           v-for="(alignmentToolGroup, key) in activeAlignmentTools"
           :key="key"
+          :dropDownActive="getDilogState('tool_group_'+key)"
         >
           <menu-button
-            @click.prevent
+            @click.prevent="()=> toggleDilaogState('tool_group_'+key)"
             :title="
               alignmentToolGroup.find((tool) =>
                 tool.isActiveTest(editor, topLevelNodeType)
@@ -227,7 +236,7 @@
 
       <div
         v-if="!dragging && currentBlockTool?.tools?.length"
-        class="gap-1 flex flex-row items-center p-1 md:p-2"
+        class="tw-gap-1 tw-flex tw-flex-row tw-items-center tw-p-1 md:tw-p-2"
       >
         <menu-button
           v-for="tool in currentBlockTool?.tools"
@@ -243,18 +252,22 @@
 
       <div
         v-if="currentBlockTool?.hasInlineTools && !dragging"
-        class="p-1 gap-0.5 md:p-2 md:gap-1 flex relative flex-row items-center"
+        class="tw-p-1 tw-gap-0.5 md:tw-p-2 md:tw-gap-1 tw-flex tw-relative tw-flex-row tw-items-center"
       >
         <menu-item
           align="right"
           :key="tool.title"
-          v-for="tool in allInlineTools"
+          v-for="(tool,index) in allInlineTools"
+           :dropDownActive="getDilogState('all_inline_tools_'+index)"
         >
           <menu-button
             :content="tool.icon"
             :label="tool.title"
             :activeClass="tool.isActiveClass"
-            @click.prevent="tool.command(editor)"
+            @click.prevent="()=>{
+              toggleDilaogState('all_inline_tools_'+index);
+              tool.command(editor)
+            }"
             :active="tool.isActiveTest(editor)"
           ></menu-button>
           <template #dropdown>
@@ -271,11 +284,14 @@
 
       <div
         v-if="editor && editor.can().deleteNode(topLevelNodeType) && !dragging"
-        class="p-1 gap-0.5 md:p-2 md:gap-1 flex group flex-row items-center relative"
+        class="tw-p-1 tw-gap-0.5 md:tw-p-2 md:tw-gap-1 tw-flex tw-tw-group tw-flex-row tw-items-center tw-relative"
       >
-        <menu-item align="right">
+        <menu-item
+          align="right"
+          :dropDownActive="getDilogState('more_option')"
+        >
           <menu-button
-            @click.prevent
+            @click.prevent="()=> toggleDilaogState('more_option')"
             :content="moreIcon"
             label="More options"
           ></menu-button>
@@ -405,6 +421,7 @@ export default {
 
   data() {
     return {
+      activeInlineDilog:{},
       dragging: false,
       draggedNodePosition: null,
       editor: null,
@@ -420,20 +437,22 @@ export default {
       isTyping: false,
       showMainToolbar: false,
       moreIcon:
-        '<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"/></svg>',
+        '<svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"/></svg>',
       deleteIcon:
-        '<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/></svg>',
+        '<svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/></svg>',
       moreIconRound:
-        '<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        '<svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
     };
   },
 
   created: function () {
     window.addEventListener("mousemove", () => this.cancelTyping());
+    this.closeAllDilogState();
   },
 
   unmounted: function () {
     window.removeEventListener("mousemove", () => this.cancelTyping());
+    this.closeAllDilogState();
   },
 
   mounted() {
@@ -485,7 +504,7 @@ export default {
         Youtube.configure({
           inline: false,
           HTMLAttributes: {
-            class: "aspect-video h-auto w-full",
+            class: "tw-aspect-video tw-h-auto tw-w-full",
           },
         }),
         ...this.extensions,
@@ -547,6 +566,28 @@ export default {
   },
 
   methods: {
+    getDilogState(key){
+      return this.activeInlineDilog[key];
+    },
+    closeAllDilogState(){
+      const keys = Object.keys(this.activeInlineDilog);
+      keys.forEach(objKey=>{
+          this.activeInlineDilog[objKey]=0;
+      })
+    },
+    toggleDilaogState(key){
+      const keys = Object.keys(this.activeInlineDilog);
+      keys.forEach(objKey=>{
+        if(objKey !== key){
+          this.activeInlineDilog[objKey]=0;
+        }
+      })
+      if(this.activeInlineDilog[key]===undefined){
+          this.activeInlineDilog[key]=1
+      }else{
+          this.activeInlineDilog[key]= ! this.activeInlineDilog[key];
+      }
+    },
     cancelTyping() {
       this.$nextTick(() => (this.isTyping = false));
     },

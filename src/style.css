@@ -2,7 +2,7 @@
 @tailwind utilities;
 
 .gutentap [data-variant="large"] {
-  @apply text-2xl;
+  @apply tw-text-2xl;
 }
 
 .gutentap [data-tooltip] {
@@ -10,29 +10,29 @@
 }
 
 .gutentap [data-tooltip]:hover::after {
-  @apply translate-y-0 opacity-100;
+  @apply tw-translate-y-0 tw-opacity-100;
 }
 
 .gutentap [data-tooltip]::after {
   content: attr(data-tooltip);
   width: max-content;
-  @apply max-w-[8em] transition text-xs px-1.5 py-0.5 text-white bg-black rounded-sm absolute bottom-[calc(100%+0.5rem)] md:bottom-auto md:top-[calc(100%+1rem)] left-1/2 -translate-x-1/2 translate-y-1 opacity-0  pointer-events-none;
+  @apply tw-max-w-[8em] tw-transition tw-text-xs tw-px-1.5 tw-py-0.5 tw-text-white tw-bg-black tw-rounded-sm tw-absolute tw-bottom-[calc(100%+0.5rem)] md:tw-bottom-auto md:tw-top-[calc(100%+1rem)] tw-left-1/2 tw--translate-x-1/2 tw-translate-y-1 tw-opacity-0  tw-pointer-events-none;
 }
 
 .gutentap [disabled] {
-  @apply text-gray-300 cursor-default;
+  @apply tw-text-gray-300 tw-cursor-default;
 }
 
 .gutentap .ProseMirror > * {
-  @apply max-w-2xl mx-auto max-sm:px-4;
+  @apply tw-max-w-2xl tw-mx-auto max-sm:tw-px-4;
 }
 
 .gutentap [data-block-width="wide"] {
-  @apply max-w-4xl  !important;
+  @apply tw-max-w-4xl  !important;
 }
 
 .gutentap [data-block-width="full"] {
-  @apply max-w-none px-0 !important;
+  @apply tw-max-w-none tw-px-0 !important;
 }
 
 .gutentap .hide-empty:empty {
@@ -48,13 +48,13 @@
 }
 
 .gutentap .ProseMirror-gapcursor {
-  @apply mx-auto mt-6 block relative !important;
+  @apply tw-mx-auto tw-mt-6 tw-block tw-relative !important;
 }
 
 .gutentap .prosemirror-dropcursor-block {
-  animation: scaleIn 0.3s ease-out forwards;
+  animation: scaleIn 0.3s tw-ease-out forwards;
   transform: scale(0);
-  @apply bg-slate-400 h-1 rounded-full !important;
+  @apply tw-bg-slate-400 tw-h-1 tw-rounded-full !important;
 }
 
 @keyframes scaleIn {
@@ -67,21 +67,21 @@
 }
 
 .editor-node-tools {
-  @apply absolute mt-1.5 h-4 text-slate-500 hover:before:duration-500  before:scale-x-0 hover:before:delay-500 after:content-["+"] hover:before:transition hover:after:duration-500 hover:after:delay-500 hover:after:transition after:scale-0 hover:after:scale-100 hover:before:scale-x-100  before:block before:absolute before:h-0.5 before:top-1/2 before:-translate-y-1/2 before:left-0 before:right-0 before:bg-slate-200 text-sm leading-none after:h-5 after:w-5 after:absolute after:rounded after:block after:bg-white after:border-slate-200  after:border-2 after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2;
+  @apply tw-absolute tw-mt-1.5 tw-h-4 tw-text-slate-500 hover:before:tw-duration-500  before:tw-scale-x-0 hover:before:tw-delay-500 after:tw-content-["+"] hover:before:tw-transition hover:after:tw-duration-500 hover:after:tw-delay-500 hover:after:tw-transition after:tw-scale-0 hover:after:tw-scale-100 hover:before:tw-scale-x-100  before:tw-block before:tw-absolute before:tw-h-0.5 before:tw-top-1/2 before:tw--translate-y-1/2 before:tw-left-0 before:tw-right-0 before:tw-bg-slate-200 tw-text-sm tw-leading-none after:tw-h-5 after:tw-w-5 after:tw-absolute after:tw-rounded after:tw-block after:tw-bg-white after:tw-border-slate-200  after:tw-border-2 after:tw-left-1/2 after:tw-top-1/2 after:tw--translate-x-1/2 after:tw--translate-y-1/2;
 }
 
 .gutentap .ProseMirror-gapcursor:after {
-  @apply block relative border-t-0 border-l h-6 border-black !important;
+  @apply tw-block tw-relative tw-border-t-0 tw-border-l tw-h-6 tw-border-black !important;
 }
-^ .gutentap .ProseMirror table p {
-  @apply my-0;
-}
-
-.gutentap .ProseMirror table p + p {
-  @apply mt-2;
+^ .gutentap .ProseMirror tw-table p {
+  @apply tw-my-0;
 }
 
-.gutentap blockquote .ProseMirror-trailingBreak {
+.gutentap .ProseMirror tw-table p + p {
+  @apply tw-mt-2;
+}
+
+.gutentap tw-blockquote .ProseMirror-trailingBreak {
   display: none;
 }
 
@@ -105,7 +105,7 @@
   pointer-events: none;
 }
 
-.gutentap .ProseMirror table {
+.gutentap .ProseMirror tw-table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
@@ -131,7 +131,7 @@
 /* .ProseMirror th {
   font-weight: bold;
   text-align: left;
-  @apply bg-slate-50;
+  @apply tw-bg-slate-50;
 } */
 
 .gutentap .ProseMirror .selectedCell:after {
@@ -146,7 +146,7 @@
   pointer-events: none;
 }
 
-.gutentap .ProseMirror table p {
+.gutentap .ProseMirror tw-table p {
   margin: 0;
 }
 
@@ -167,4 +167,8 @@
 .gutentap .resize-cursor {
   cursor: ew-resize;
   cursor: col-resize;
+}
+
+.hidden{
+  @apply tw-hidden;
 }

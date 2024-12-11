@@ -1,19 +1,19 @@
 <template>
   <div class="gutentap">
-    <div class="h-screen lg:grid lg:grid-cols-3">
-      <div class="relative col-span-2 h-screen overflow-y-auto">
+    <div class="tw-h-screen lg:tw-grid lg:tw-grid-cols-3">
+      <div class="tw-relative tw-col-span-2 tw-h-screen tw-overflow-y-auto">
         <div
-          class="flex flex-row gap-4 items-center fixed lg:absolute top-4 z-20 right-4"
+          class="tw-flex tw-flex-row tw-gap-4 tw-items-center tw-fixed lg:tw-absolute tw-top-4 tw-z-20 tw-right-4"
         >
           <button
             @click.prevent="editable = !editable"
             v-text="editable ? 'Editable' : 'Read only'"
-            class="rounded-full border-2 py-2 px-4"
+            class="tw-rounded-full tw-border-2 tw-py-2 tw-px-4"
           />
 
           <button
             aria-label="show JSON"
-            class="lg:hidden w-12 h-12 bg-slate-800 text-white rounded-full border-2"
+            class="lg:hidden tw-w-12 tw-h-12 bg-slate-800 tw-text-white tw-rounded-full tw-border-2"
             @click.prevent="showContent = !showContent"
           >
             { }
@@ -22,7 +22,7 @@
           <a
             aria-label="View on Github"
             href="https://github.com/johnpuddephatt/gutentap"
-            class="w-12 h-12 p-2.5 bg-white text-white rounded-full border-2"
+            class="tw-w-12 tw-h-12 tw-p-2.5 tw-bg-white tw-text-white tw-rounded-full tw-border-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -38,29 +38,29 @@
         </div>
 
         <gutentap
-          editorClass="my-32 prose xl:prose-xl text-slate-600 max-w-none"
+          editorClass="tw-my-32 tw-prose xl:tw-prose-xl text-slate-600 tw-max-w-none"
           v-model="content"
           :editable="editable"
           mode="json"
-          :blockTools="blockTools"
+          :tw-blockTools="tw-blockTools"
           :extensions="extensions"
-          :blockWidthTypes="[
+          :tw-blockWidthTypes="[
             'vueComponent',
             'horizontalRule',
-            'blockquote',
+            'tw-blockquote',
             'youtube',
           ]"
         />
       </div>
       <div
-        class="fixed transition top-0 right-0 bottom-0 w-11/12 lg:w-auto py-32 lg:static h-screen bg-slate-600 text-white lg:translate-x-0 px-8 overflow-y-auto"
+        class="tw-fixed tw-transition tw-top-0 tw-right-0 tw-bottom-0 tw-w-11/12 lg:tw-w-auto tw-py-32 lg:tw-static tw-h-screen tw-bg-slate-600 tw-text-white lg:tw-translate-x-0 tw-px-8 tw-overflow-y-auto"
         :class="{
-          'translate-x-0': showContent,
-          'translate-x-full': !showContent,
+          'tw-translate-x-0': showContent,
+          'tw-translate-x-full': !showContent,
         }"
       >
-        <h3 class="font-bold mb-8 text-3xl">Editor output</h3>
-        <pre class="block text-sm w-full">{{ content }}</pre>
+        <h3 class="tw-font-bold tw-mb-8 tw-text-3xl">Editor output</h3>
+        <pre class="tw-block tw-text-sm tw-w-full">{{ content }}</pre>
       </div>
     </div>
   </div>

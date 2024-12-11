@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="editor"
-    class="text-base px-8 fixed bottom-0 bg-gray-100 py-1 border-t left-0 right-0 flex flex-row gap-2"
+    class="text-base tw-px-8 tw-fixed tw-bottom-0 tw-bg-gray-100 tw-py-1 tw-border-t tw-left-0 tw-right-0 tw-flex tw-flex-row tw-gap-2"
   >
     <div v-for="(node, key) in nodeTree" :key="node">
       {{ node }} <span v-if="key < nodeTree.length - 1">&gt;</span>
