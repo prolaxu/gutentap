@@ -651,6 +651,7 @@ export default {
     },
 
     tableIsActive() {
+      this.closeAllDilogState();
       return this.editable && this.getTopLevelNodeType() == "table";
     },
 

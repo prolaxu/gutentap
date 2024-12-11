@@ -55,8 +55,7 @@ export default {
 
 <style>
 /* Add smooth transition styles */
-.dropdown-enter-active,
-.dropdown-leave-active {
+.dropdown-enter-active {
   transition: all 0.3s ease;
 }
 
